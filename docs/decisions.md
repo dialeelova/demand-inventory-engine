@@ -48,3 +48,8 @@
 - last_week overreacts the week after (WAPE 0.534). avg_4_weeks stays polluted for weeks (WAPE 1.154 on 2017-12-18).
 - The buffer (8-week std) is inflated after the spike, so ordering is probably too high then (not measured).
 - Only one Black Friday in the data, so a model cannot learn it.
+
+## Failure test 1 fixes (result)
+- Median-of-4 in the blend: slightly better after the spike (WAPE 0.220 vs 0.236 on 2017-11-27, 0.659 vs 0.717 on 2017-12-18). No effect on the spike week (0.624).
+- Manual uplift on 2017-11-20: the exact multiplier would have been 2.55. Fill rate at x1.0 / x1.5 / x2.0 / x2.5: 46% / 64% / 80% / 91.5%.
+- The uplift is tuned on a single event and known only after the fact. Leftover stock at each multiplier was not measured. A real system needs a holiday calendar and manager judgment.
