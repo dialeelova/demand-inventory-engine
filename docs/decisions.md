@@ -61,3 +61,11 @@
 - Opposite risk to Black Friday: shelves stay full, but money is tied up in stock.
 - Leftover is overstated because the simulation does not carry stock over to the next week.
 - Cause of the drop is not confirmed.
+
+## Failure test 3: new categories with no history (result)
+- Simulated launches at weeks 20, 40 and 60 for all 74 categories (hidden history).
+- 0 weeks of data: best method WAPE 0.964 vs 1.000 for always-zero. mean_all_categories is worse than zero (1.21).
+- 1 week of own data: own_average WAPE 0.248. 2 weeks: 0.230. 4 weeks: 0.242. 8 weeks: 0.264.
+- Mixing own data with a typical category (prior weight 4) was worse than own data alone (0.782 at 1 week, 0.402 at 8 weeks). Other prior weights were not tested.
+- Decision: small fixed first order, then own recent sales after 1 week.
+- Limit: simulation uses mature categories, so a real ramp-up would give higher errors.
