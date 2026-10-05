@@ -32,16 +32,10 @@ Data: [Olist e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazili
 
 ## How to run it
 
-You need Python 3 and PostgreSQL (database `olist`, user `demo`, password `demo`). Download the [Olist data](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the CSV files in `data/raw/`.
-
-```
-pip install -r requirements.txt
-python src/load_raw.py
-python src/build_clean.py
-python src/build_weekly.py
-python src/baseline.py
-python src/model.py
-python src/blend.py
-```
-
-The last command prints the forecast comparison.
+1. Clone the repository
+2. Install dependencies: `pip install -r requirements.txt`
+3. Set up PostgreSQL with a database `olist` (user and password `demo`)
+4. Download the [data from Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the CSV files in `data/raw/`
+5. Load and clean the data: `python src/load_raw.py` then `python src/build_clean.py`
+6. Build the weekly table: `python src/build_weekly.py`
+7. Run the forecasts: `python src/baseline.py`, `python src/model.py`, then `python src/blend.py`
