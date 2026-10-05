@@ -53,3 +53,11 @@
 - Median-of-4 in the blend: slightly better after the spike (WAPE 0.220 vs 0.236 on 2017-11-27, 0.659 vs 0.717 on 2017-12-18). No effect on the spike week (0.624).
 - Manual uplift on 2017-11-20: the exact multiplier would have been 2.55. Fill rate at x1.0 / x1.5 / x2.0 / x2.5: 46% / 64% / 80% / 91.5%.
 - The uplift is tuned on a single event and known only after the fact. Leftover stock at each multiplier was not measured. A real system needs a holiday calendar and manager judgment.
+
+## Failure test 2: May 2018 demand drop (result)
+- Week of 2018-05-21: units 1,100 vs 2,130 the week before. WAPE 0.954 (normal: 0.2 to 0.3).
+- Order rule (blend + 1 buffer): ordered 2,591 units, fill rate 99.5%, but 57.8% of the ordered units were left over (normal: about 25%).
+- The following week was still over-ordered (40.0% leftover). Back to normal levels from 2018-06-04 (about 2 weeks).
+- Opposite risk to Black Friday: shelves stay full, but money is tied up in stock.
+- Leftover is overstated because the simulation does not carry stock over to the next week.
+- Cause of the drop is not confirmed.
