@@ -1,12 +1,12 @@
 # Demand and Inventory Decision Engine
 
-## What this project is
+## 🛒 What this project is
 
 Every online shop faces the same question: how many units of each product should be kept in stock? If the shop orders too little, customers find empty shelves and the shop loses sales. If it orders too much, money is tied up in goods that do not sell.
 
 This project builds a small decision system for that question. It uses real order data from Olist, a Brazilian online marketplace (about 100,000 orders from January 2017 to August 2018). The system looks at what was sold in the past, estimates how much will be sold next week, and suggests how many units to order.
 
-## What it does
+## ⚙️ What it does
 
 1. **Prepares the data.** It loads the raw files into a PostgreSQL database, checks them for errors (for example, orders marked as delivered that have no delivery date) and builds a clean version for analysis.
 2. **Forecasts demand.** It predicts the number of units sold next week for each of 74 product categories, and compares several forecasting methods using a fair test on the most recent 20 weeks.
@@ -16,7 +16,7 @@ This project builds a small decision system for that question. It uses real orde
 
 Data: [Olist e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). Tools: Python, SQL, PostgreSQL, pandas, scikit-learn.
 
-## Main findings
+## 🔍 Main findings
 
 - Forecasting single products does not work with this data. Most products sell only once or twice, so no method beat predicting zero.
 - Forecasting by category works better. The average of three simple forecasts was slightly better than any single one, including gradient boosting (error 0.259 against 0.275 for the best single method).
@@ -25,7 +25,7 @@ Data: [Olist e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazili
 
 ![Weekly units, top 4 categories](docs/charts/weekly_units_top_categories.png)
 
-## More detail
+## 📚 More detail
 
 - [Full report with all results and failure tests](docs/full_report.md)
 - [Decisions and the reasons behind them](docs/decisions.md)
