@@ -69,3 +69,11 @@
 - Mixing own data with a typical category (prior weight 4) was worse than own data alone (0.782 at 1 week, 0.402 at 8 weeks). Other prior weights were not tested.
 - Decision: small fixed first order, then own recent sales after 1 week.
 - Limit: simulation uses mature categories, so a real ramp-up would give higher errors.
+
+## Failure test 4: missing week of data (result)
+- Simulated one missing week at 61 positions (weeks near Black Friday and the May drop skipped).
+- One week after the outage, WAPE for avg_4_weeks / last_week: no outage 0.263 / 0.266, missing as zero 0.371 / 1.000, filled with previous week 0.286 / 0.307, filled with 4-week average 0.287 / 0.285.
+- Two weeks after: avg_4_weeks stays damaged (0.357 with zeros), last_week is back to normal (0.258).
+- Filling the gap recovers about three quarters of the loss. The two filling methods are too close to rank.
+- Decision: flag weeks with unusually low total units and fill them before forecasting. The real case was the incomplete last week of the data (2018-08-20).
+- Limit: the simulation removes a full week for all categories. A partial outage would look like a demand drop.
