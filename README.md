@@ -32,33 +32,11 @@ Data: [Olist e-commerce dataset](https://www.kaggle.com/datasets/olistbr/brazili
 
 ## How to run it
 
-You need Python 3, PostgreSQL and a free Kaggle account (to download the data). The commands below are for Linux or a GitHub Codespace.
-
-**Step 1. Download the code and install the libraries.**
+You need Python 3 and PostgreSQL (database `olist`, user `demo`, password `demo`). Download the [Olist data](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the CSV files in `data/raw/`.
 
 ```
-git clone https://github.com/dialeelova/demand-inventory-engine.git
-cd demand-inventory-engine
-python -m venv .venv
-source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-**Step 2. Create the database.**
-
-```
-sudo service postgresql start
-sudo -u postgres psql -c "CREATE USER demo WITH PASSWORD 'demo';"
-sudo -u postgres createdb -O demo olist
-```
-
-**Step 3. Add the data.** Download the dataset from the Kaggle link above, unzip it, and put the CSV files into a folder named `data/raw/`.
-
-**Step 4. Run the pipeline.** Run these commands one after another, in this order.
-
-```
 python src/load_raw.py
-python src/quality_checks.py
 python src/build_clean.py
 python src/build_weekly.py
 python src/baseline.py
@@ -66,6 +44,4 @@ python src/model.py
 python src/blend.py
 ```
 
-**Step 5. Check the result.** The last command prints a table comparing the forecasting methods. The row `blend` should show an error (WAPE) of about 0.259 for all categories.
-
-The remaining scripts in `src/` run the order-quantity test, the charts and the failure tests.
+The last command prints the forecast comparison.
